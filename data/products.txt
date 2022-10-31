@@ -1,6 +1,5 @@
 cappucino
 espresso
 mystery sandwich
-
 cheese
 no
