@@ -47,7 +47,6 @@ Courier: 2
         except Exception as e:
             print(f"Error: {str(e)}.")
             
-        return sub_menu()
     elif which_file == 2:
         try:
             with open(r"data\couriers.txt", "r") as courier:
@@ -56,13 +55,16 @@ Courier: 2
                 print(f"Couriers: {formatted_courier_list}")
         except Exception as e:
             print(f"Error: {str(e)}.")
-        return sub_menu
+    elif which_file == 3:
+        global orders_list
+        print(orders_list)
 
 def create_item():
     which_file = int(input("""
 Which menu would you like to access?
 Product: 1
 Courier: 2
+Orders: 3
 """))
     if which_file == 1:
         new_item = input("Enter new product:\n").lower()
@@ -80,6 +82,9 @@ Courier: 2
         except Exception as e:
             print(f"Error: {str(e)}")
         return sub_menu()
+    # elif which_file == 3:
+        #add_order()
+
 
 def update_item():
     which_file =  int(input("""
