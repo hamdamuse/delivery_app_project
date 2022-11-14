@@ -1,7 +1,8 @@
 import os
 
 def main_menu():
-    main_options = int(input(""" 
+    main_options = int(input("""
+Welcome.
 Exit: 0
 Continue: 1
 """))
@@ -31,6 +32,7 @@ Delete product/courier: 4:
             delete_item()
         else:
             print("Please enter a number between 0 and 4.")
+    return main_menu
 
 def print_menu():
     which_file = int(input("""
@@ -43,10 +45,10 @@ Courier: 2
             with open(r"data\products.txt", "r") as product:
                 product_list = product.readlines()
                 formatted_product_list = [i.strip("\n") for i in product_list]
-                print(f"Products: {formatted_product_list}")
+                print(f"Products: {', '.join(formatted_product_list)}")
         except Exception as e:
             print(f"Error: {str(e)}.")
-            
+    
     elif which_file == 2:
         try:
             with open(r"data\couriers.txt", "r") as courier:
@@ -58,6 +60,8 @@ Courier: 2
     elif which_file == 3:
         global orders_list
         print(orders_list)
+    
+    return sub_menu()
 
 def create_item():
     which_file = int(input("""
