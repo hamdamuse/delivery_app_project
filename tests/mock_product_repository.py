@@ -19,7 +19,7 @@ class TestMockProductRepository(AbstractRepository):
         expected = ['name,price\r\n', 'coke zero,0.8\r\n']
         assert result == expected
 
-    def test_add_multiple_product(self):
+    def test_add_multiple_products(self):
         mock_products_csv = StringIO()
         mock_products_csv.seek(0)
         fieldnames = ["name", "price"]
@@ -31,6 +31,9 @@ class TestMockProductRepository(AbstractRepository):
         result = mock_products_csv.readlines()
         expectation = ['name,price\r\n', 'latte,3.2\r\n','7up,0.8\r\n']
         assert result ==expectation
+
+    def test_add_product_with_incorrect_format(self):
+        pass
 
     def test_read_from_mock_csv(self):
         product_list = []
@@ -54,11 +57,15 @@ coke zero, 0.8
                     csv_file = csv.DictReader(file)
                     for row in csv_file:
                         product_list.append(row)
+                        break
         except TypeError:
             print("Type Error: Make sure input is a csv file. Product list is empty")
         result = product_list
         expectation = []
         assert result == expectation
+
+    
+
 
 
         
