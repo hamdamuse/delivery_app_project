@@ -3,7 +3,6 @@ import csv
 
 
 def load(file_name):
-    file_name = "data\products.csv"
     item_list = []
     try:
         with open(file_name, "r") as file:
@@ -17,7 +16,7 @@ def load(file_name):
     except FileNotFoundError:
         print("File not found, please try again.")
     if not item_list:
-        print("Product list is empty. Please add products.")
+        print("List empty. Please add items.")
         #TODO: direct to add products
 
 def save_products():

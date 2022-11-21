@@ -28,8 +28,6 @@ Product Menu: 1
 Courier Menu: 2
 Order Menu: 3
 """
-    sentinel = PropertyMock(side_effect=[True, False])
-    app.running = sentinel
     
     with patch("builtins.input", return_value = 1) as mock_cmd:
         assert input() == 1

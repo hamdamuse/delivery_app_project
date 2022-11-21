@@ -18,6 +18,7 @@ coke zero, 0.8
     result = product_list
     expectation = [{'name': 'coke zero', 'price': ' 0.8'}, {'name': '7up', 'price': ' 0.8'}]
     assert result == expectation
+    return product_list
 
 def test_load_couriers():
     courier_list = []
@@ -26,13 +27,38 @@ def test_load_couriers():
 Bob,0789887889
 Jane,0783458075
 """)) as mocked_couriers:
-        with open("mock_products_csv", "r") as file:
+        with open("mock_couriers_csv", "r") as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
                 courier_list.append(row)
     result = courier_list
     expectation = [{'name': 'Bob', 'phone_number': '0789887889'}, {'name': 'Jane', 'phone_number': '0783458075'}]
     assert result == expectation
+    return courier_list
+
+def test_load_orders():
+    orders_list = []
+    with patch('builtins.open', mock_open(read_data=
+'''customer_name,customer_address,customer_phone,courier,status,items
+John,"Unit 2, 12 Main Street, LONDON, WH1 2ER",0789887334,2,preparing,"0,1"
+''')) as mocked_couriers:
+        with open("mock_orders_csv", "r") as file:
+            csv_file = csv.DictReader(file)
+            for row in csv_file:
+                orders_list.append(row)
+    result = orders_list
+    expectation = [
+        {
+            "customer_name": "John",
+            "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
+            "customer_phone": "0789887334",
+            "courier": "2",
+            "status": "preparing",
+            "items": "0,1"
+    }]
+    assert result == expectation
+    return orders_list
+
 
 
 def test_save_products_includes_exception_handling():
