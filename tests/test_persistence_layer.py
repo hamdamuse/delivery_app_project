@@ -87,3 +87,72 @@ def test_save_products_includes_exception_handling():
         print(f"Error: {str(e)}")
         result = file.readlines()
         expectation = ["name,price\r\n","fanta,0.8\r\n","coke,0.8\r\n"]
+
+
+
+def test_save_couriers():
+    mock_courier_list = [{"name": "Bruce","phone": "0789887889"}, {"name": "Helen", "phone":"0783458075"}]
+    try:
+        with patch("builtins.open", mock_open) as mocked_open:
+            with open("mock_couriers", "w",newline="") as file:
+                fieldnames = ["name", "phone"]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for courier in mock_courier_list:
+                    writer.writerow(courier)
+    except FileNotFoundError:
+        print("File not found, please try again.")
+    except TypeError:
+        print("TypeError: Please check input type")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        result = file.readlines()
+        expectation = ["name,phone\r\n","Bruce,0789887889\r\n","Helen,0783458075\r\n"]
+        assert result == expectation
+
+def test_save_orders():
+    mock_order_list =[
+{
+    "customer_name": "Jim",
+    "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0723455889",
+    "courier": 1,
+    "status":"preparing",
+    "items": "0,1"
+    }, 
+{
+    "customer_name": "Jane",
+    "customer_address": "Unit 3, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0738475029",
+    "courier": 1,
+    "status":"preparing",
+    "items": "0,1"
+}]
+    try:
+        with patch("builtins.open", mock_open) as mocked_open:
+            with open("mock_couriers", "w",newline="") as file:
+                fieldnames = [
+                    "customer_name",
+                    "customer_address",
+                    "customer_phone",
+                    "courier",
+                    "status",
+                    "items"
+                    ]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for order in mock_order_list:
+                    writer.writerow(order)
+    except FileNotFoundError:
+        print("File not found, please try again.")
+    except TypeError:
+        print("TypeError: Please check input type")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        result = file.readlines()
+        expectation = [
+            'customer_name,customer_address,customer_phone,courier,status,items\r\n',
+            'Jim,"Unit 2,12 Main Street LONDON, WH1 2ER",0723455889,1,preparing,"0,1"\r\n',
+            'Helen,"Unit 3,12 Main Street LONDON, WH1 2ER",0738475029,1,preparing,"0,1"\r\n'
+            ]
+        assert result == expectation

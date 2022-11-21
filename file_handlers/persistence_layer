@@ -1,6 +1,6 @@
 from pathlib import Path
 import csv
-import model
+
 
 def load(file_name):
     file_name = "data\products.csv"
@@ -13,7 +13,7 @@ def load(file_name):
                     item_list.append(row)
                 return item_list
             else:
-                print("Incorrect file extension. Please make sure file is csv")
+                print("Incorrect file extension. Please make sure file is csv.")
     except FileNotFoundError:
         print("File not found, please try again.")
     if not item_list:
@@ -39,14 +39,18 @@ def save_products():
 
 def save_couriers():
     #hardcoded as model yet to be written
+    file_name = "data\couriers.csv"
     courier_list = [{'name': 'Bob', 'phone_number': '0789887889'}, {'name': 'Jane', 'phone_number': '0783458075'}]
     try:
-        with open("data\couriers.csv", "w",newline='') as file:
-            fieldnames = ["name", "phone_number"]
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writeheader()
-            for courier in courier_list:
-                writer.writerow(courier)
+        with open(file_name, "w",newline='') as file:
+            if Path(file_name).suffix == ".csv":
+                fieldnames = ["name", "phone_number"]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for courier in courier_list:
+                    writer.writerow(courier)
+            else:
+                print("Incorrect file extension. Please make sure file is csv.")
     except FileNotFoundError:
         print("File not found, please try again.")
     except TypeError:
@@ -55,6 +59,49 @@ def save_couriers():
         print(f"Error: {str(e)}")
 
 def save_orders():
-    pass
+    file_name = "data\orders.csv"
+    order_list =[
+{
+    "customer_name": "Jim",
+    "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0723455889",
+    "courier": 1,
+    "status":"preparing",
+    "items": "0,1"
+    }, 
+{
+    "customer_name": "Jane",
+    "customer_address": "Unit 3, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0738475029",
+    "courier": 1,
+    "status":"preparing",
+    "items": "0,1"
+}]
+    try:
+        with open(file_name, "w",newline="") as file:
+            if Path(file_name).suffix == ".csv":
+                fieldnames = [
+                "customer_name",
+                "customer_address",
+                "customer_phone",
+                "courier",
+                "status",
+                "items"
+                ]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for order in order_list:
+                    writer.writerow(order)
+            else:
+                print("Incorrect file extension. Please make sure file is csv.")
+    except FileNotFoundError:
+        print("File not found, please try again.")
+    except TypeError:
+        print("TypeError: Please check input type")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        
 
 
+save_couriers()
+save_orders()
