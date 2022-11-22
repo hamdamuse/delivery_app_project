@@ -20,16 +20,21 @@ def load(file_name):
         print("List empty. Please add items.")
         #TODO: direct to add products
 
-def save_products():
+products_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\food-delivery-app-project\data\products.csv"
+couriers_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\food-delivery-app-project\data\couriers.csv"
+orders_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\food-delivery-app-project\data\orders.csv"
+
+def save_products(product_list):
     #data hardcoded as model isn't finished
-    product_list = [{"name": "fanta", "price":0.8}]
     try:
-        with open("data\products.csv", "w",newline='') as file:
+        with open(products_file_path, "w",newline='') as file:
+            if Path(products_file_path).suffix == ".csv"
             fieldnames = ["name", "price"]
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             for product in product_list:
                 writer.writerow(product)
+            else: print("Incorrect file extension. Please make sure file is csv.")
     except FileNotFoundError:
         print("File not found, please try again.")
     except TypeError:
@@ -37,13 +42,12 @@ def save_products():
     except Exception as e:
         print(f"Error: {str(e)}")
 
-def save_couriers():
+def save_couriers(courier_list):
     #hardcoded as model yet to be written
-    file_name = "data\couriers.csv"
     courier_list = [{'name': 'Bob', 'phone_number': '0789887889'}, {'name': 'Jane', 'phone_number': '0783458075'}]
     try:
-        with open(file_name, "w",newline='') as file:
-            if Path(file_name).suffix == ".csv":
+        with open(couriers_file_path, "w",newline='') as file:
+            if Path(couriers_file_path).suffix == ".csv":
                 fieldnames = ["name", "phone_number"]
                 writer = csv.DictWriter(file, fieldnames=fieldnames)
                 writer.writeheader()
@@ -58,7 +62,7 @@ def save_couriers():
     except Exception as e:
         print(f"Error: {str(e)}")
 
-def save_orders():
+def save_orders(order_list):
     file_name = "data\orders.csv"
     order_list =[
 {
@@ -102,4 +106,4 @@ def save_orders():
         print(f"Error: {str(e)}")
         
 
-load(r"data\products.csv")
+
