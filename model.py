@@ -11,7 +11,6 @@ product_list = load_products()
 
 def load_couriers():
     courier_list = load(couriers_file_path)
-    #formatted_courier_list = [{}]
     return courier_list
 
 courier_list = load_couriers()
@@ -35,6 +34,10 @@ def save_orders_to_csv():
 def print_products(product_list):
     for product in product_list:
         print(f"Name: {product['name']}, Price: {product['price']:.2f}")
+
+def print_couriers(courier_list):
+    for courier in courier_list:
+        print(f"Courier name: {courier['name']}, Phone number: {courier['phone_number']}")
 
 
 def add_product(product_list, name, price):
