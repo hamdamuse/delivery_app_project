@@ -1,16 +1,20 @@
 import file_handlers.model as model
 
 
-
 def print_main_menu_options():
-    print(("""
+    print(
+        (
+            """
 Welcome to Hamda's cafe app:
 MAIN MENU
 Exit: 0
 Product Menu: 1
 Courier Menu: 2
 Order Menu: 3
-"""))
+"""
+        )
+    )
+
 
 def navigate_main_menu():
     print_main_menu_options()
@@ -30,22 +34,26 @@ def navigate_main_menu():
             elif cmd == 3:
                 print("Order Menu pending")
                 break
-            else: 
+            else:
                 print("Error: Please input valid number.")
             break
         except ValueError:
-                print("Please enter a number.")
-                break
+            print("Please enter a number.")
+            break
+
 
 def print_product_menu_options():
-    print("""
+    print(
+        """
 PRODUCT MENU
 Exit to MAIN MENU: 0
 Print products: 1
 Add product: 2
 Update product: 3
 Delete product: 4
-""")
+"""
+    )
+
 
 def navigate_product_menu():
     while True:
@@ -53,7 +61,7 @@ def navigate_product_menu():
         try:
             cmd = int(input("Enter input here -> "))
             if cmd == 0:
-                #include save property
+                # include save property
                 navigate_main_menu()
             elif cmd == 1:
                 print("Print products pending")
@@ -69,31 +77,35 @@ def navigate_product_menu():
             elif cmd == 4:
                 print("Delete product pending")
                 break
-            else: 
+            else:
                 print("Error: please input valid number.")
             continue
         except ValueError:
             print("Error: please enter a number")
             continue
 
+
 def print_courier_menu_options():
-    print("""
+    print(
+        """
 COURIER MENU
 Exit to MAIN MENU: 0
 Print couriers: 1
 Add courier: 2
 Update courier: 3
 Delete courier: 4
-""")
+"""
+    )
+
 
 def navigate_courier_menu():
-    
+
     while True:
         print_courier_menu_options()
         try:
             cmd = int(input("Enter input here -> "))
             if cmd == 0:
-                #include save property
+                # include save property
                 navigate_main_menu()
             elif cmd == 1:
                 print("Print courier pending")
@@ -107,12 +119,13 @@ def navigate_courier_menu():
             elif cmd == 4:
                 print("Delete courier pending")
                 break
-            else: 
+            else:
                 print("Error: please input valid number.")
             continue
         except ValueError:
             print("Error: please enter a number")
             continue
+
 
 def print_order_menu_options():
     pass

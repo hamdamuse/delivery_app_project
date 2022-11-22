@@ -1,17 +1,24 @@
-import test_persistence_layer
+
 from unittest.mock import patch
 import pytest
-from file_handlers import model
-
+import sys
+sys.path.append("..")
+import file_handlers.model as model
+import tests.test_persistence_layer as csv_layer
 
 def test_load_products_from_persistence_layer():
-    product_list = test_persistence_layer.test_load_products()
+    product_list = csv_layer.test_load_products()
     result = product_list
-    expectation = [{'name': 'coke zero', 'price': ' 0.8'}, {'name': '7up', 'price': ' 0.8'}]
+    expectation = [
+        {"name": "coke zero", "price": " 0.8"},
+        {"name": "7up", "price": " 0.8"},
+    ]
     assert result == expectation
     return product_list
 
+
 product_list = test_load_products_from_persistence_layer()
+
 
 def test_format_products(product_list):
     formatted_product_list = []
@@ -19,9 +26,8 @@ def test_format_products(product_list):
         product["price"] = float(product["price"])
         formatted_product_list.append(product)
     result = formatted_product_list
-    expectation = [{'name': 'coke zero', 'price': 0.8}, {'name': '7up', 'price': 0.8}]
+    expectation = [{"name": "coke zero", "price": 0.8}, {"name": "7up", "price": 0.8}]
     assert result == expectation
-    
 
 
 def test_enumerate_product_list(product_list):
@@ -35,16 +41,21 @@ def test_enumerate_product_list(product_list):
 
 
 def test_load_couriers_from_persistence_layer():
-    courier_list = test_persistence_layer.test_load_couriers()
+    courier_list = csv_layer.test_load_couriers()
     result = courier_list
-    expectation = [{'name': 'Bob', 'phone_number': '0789887889'}, {'name': 'Jane', 'phone_number': '0783458075'}]
+    expectation = [
+        {"name": "Bob", "phone_number": "0789887889"},
+        {"name": "Jane", "phone_number": "0783458075"},
+    ]
     assert result == expectation
     return courier_list
 
+
 courier_list = test_load_couriers_from_persistence_layer()
 
+
 def test_load_orders_from_persistence_layer():
-    order_list = test_persistence_layer.test_load_orders()
+    order_list = csv_layer.test_load_orders()
     result = order_list
     expectation = [
         {
@@ -53,54 +64,78 @@ def test_load_orders_from_persistence_layer():
             "customer_phone": "0789887334",
             "courier": "2",
             "status": "preparing",
-            "items": "0,1"
-    }]
+            "items": "0,1",
+        }
+    ]
     assert result == expectation
     return order_list
+
 
 order_list = test_load_orders_from_persistence_layer()
 
 
 def test_add_product():
-    product_list = [{'name': 'coke zero', 'price': ' 0.8'}, {'name': '7up', 'price': ' 0.8'}]
-    with patch("builtins.input", return_value = "latte") as mock_product_name:
-        with patch("builtins.input", return_value = 3.2) as mock_product_price:
-            new_product = {"name": mock_product_name.return_value, "price": mock_product_price.return_value}
+    product_list = [
+        {"name": "coke zero", "price": " 0.8"},
+        {"name": "7up", "price": " 0.8"},
+    ]
+    with patch("builtins.input", return_value="latte") as mock_product_name:
+        with patch("builtins.input", return_value=3.2) as mock_product_price:
+            new_product = {
+                "name": mock_product_name.return_value,
+                "price": mock_product_price.return_value,
+            }
             product_list.append(new_product)
     result = product_list
     expectation = [
-        {'name': 'coke zero', 'price': ' 0.8'},
-        {'name': '7up', 'price': ' 0.8'},
-        {'name': 'latte', 'price':3.2}
-        ]
+        {"name": "coke zero", "price": " 0.8"},
+        {"name": "7up", "price": " 0.8"},
+        {"name": "latte", "price": 3.2},
+    ]
     assert result == expectation
     return product_list
+
 
 @pytest.fixture
 def product_name():
     return "cappuccino"
 
+
 @pytest.fixture
 def product_price():
     return 3.4
 
+
 @pytest.fixture
 def product_list():
-    return [
-        {'name': 'coke zero', 'price':  0.8},
-        {'name': '7up', 'price': 0.8}
-        ]
+    return [{"name": "coke zero", "price": 0.8}, {"name": "7up", "price": 0.8}]
+
 
 def test_add_product_including_fixtures(product_name, product_price):
     model.add_product(product_list, product_name, product_price)
-    result = product_list()
+    result = product_list
     expectation = [
-        {'name': 'coke zero', 'price': ' 0.8'},
-        {'name': '7up', 'price': ' 0.8'},
-        {'name': "cappucino", 'price': 3.4}
-        ]
+        {"name": "coke zero", "price": 0.8},
+        {"name": "7up", "price": 0.8},
+        {"name": "cappucino", "price": 3.4},
+    ]
     assert result == expectation
 
-    
 
-print(product_list)
+@pytest.fixture
+def courier_name():
+    return "Darren"
+
+
+@pytest.fixture
+def courier_phone():
+    return "0765434567"
+
+
+def test_add_courier(courier_name, courier_phone):
+    model.add_courier(model.courier_list, courier_name, courier_phone)
+    expectation = [
+        {"name": "Bob", "phone_number": "0789887889"},
+        {"name": "Jane", "phone_number": "0783458075"},
+        {"name": "Darren", "phone_number": "0765434567"},
+    ]
