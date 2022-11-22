@@ -65,8 +65,7 @@ def navigate_product_menu():
                 # include save property
                 navigate_main_menu()
             elif cmd == 1:
-                print("Print products pending")
-                break
+                model.print_products()
             elif cmd == 2:
                 product_name = input("Enter new product name -> ")
                 product_price = float(input("Enter new product price -> "))
