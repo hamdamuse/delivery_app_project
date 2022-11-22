@@ -20,9 +20,9 @@ def load(file_name):
         # TODO: direct to add products
 
 
-products_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\delivery_app_project\data\products.csv"
-couriers_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\delivery_app_project\data\couriers.csv"
-orders_file_path = r"C:\Users\Owner\OneDrive\Documents\generation\mini project\draft\delivery_app_project\data\orders.csv"
+products_file_path = r"data\products.csv"
+couriers_file_path = r"data\couriers.csv"
+orders_file_path = r"data\orders.csv"
 
 
 def save_products(product_list):
