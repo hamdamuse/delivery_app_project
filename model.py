@@ -34,7 +34,7 @@ def save_orders_to_csv():
 
 def print_products(product_list):
     for product in product_list:
-        print(product_list)
+        print(f"Name: {product['name']}, Price: {product['price']:.2f}")
 
 
 def add_product(product_list, name, price):
@@ -50,4 +50,3 @@ def add_courier(courier_list, name, phone):
 def add_order(order_list):
     pass
 
-print_products(product_list)
