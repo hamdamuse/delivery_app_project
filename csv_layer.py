@@ -9,13 +9,10 @@ def load(file_name):
     item_list = []
     try:
         with open(file_name, "r") as file:
-            if Path(file_name).suffix == ".csv":
-                csv_file = csv.DictReader(file)
-                for row in csv_file:
-                    item_list.append(row)
+            csv_file = csv.DictReader(file)
+            for row in csv_file:
+                item_list.append(row)
                 return item_list
-            else:
-                print("Incorrect file extension. Please make sure file is csv.")
     except FileNotFoundError:
         print("File not found, please try again.")
     if not item_list:
