@@ -1,6 +1,9 @@
 from pathlib import Path
 import csv
 
+products_file_path = r"data\products.csv"
+couriers_file_path = r"data\couriers.csv"
+orders_file_path = r"data\orders.csv"
 
 def load(file_name):
     item_list = []
@@ -18,11 +21,6 @@ def load(file_name):
     if not item_list:
         print("List empty. Please add items.")
         # TODO: direct to add products
-
-
-products_file_path = r"data\products.csv"
-couriers_file_path = r"data\couriers.csv"
-orders_file_path = r"data\orders.csv"
 
 
 def save_products(product_list):
@@ -51,14 +49,11 @@ def save_couriers(courier_list):
     ]
     try:
         with open(couriers_file_path, "w", newline="") as file:
-            if Path(couriers_file_path).suffix == ".csv":
-                fieldnames = ["name", "phone_number"]
-                writer = csv.DictWriter(file, fieldnames=fieldnames)
-                writer.writeheader()
-                for courier in courier_list:
-                    writer.writerow(courier)
-            else:
-                print("Incorrect file extension. Please make sure file is csv.")
+            fieldnames = ["name", "phone_number"]
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for courier in courier_list:
+                writer.writerow(courier)
     except FileNotFoundError:
         print("File not found, please try again.")
     except TypeError:
@@ -68,40 +63,21 @@ def save_couriers(courier_list):
 
 
 def save_orders(order_list):
-    # order_list hardcoded as functionality is limited at present.
-    order_list = [
-        {
-            "customer_name": "Jim",
-            "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
-            "customer_phone": "0723455889",
-            "courier": 1,
-            "status": "preparing",
-            "items": "0,1",
-        },
-        {
-            "customer_name": "Jane",
-            "customer_address": "Unit 3, 12 Main Street, LONDON, WH1 2ER",
-            "customer_phone": "0738475029",
-            "courier": 1,
-            "status": "preparing",
-            "items": "0,1",
-        },
-    ]
+    
     try:
         with open(orders_file_path, "w", newline="") as file:
-            if Path(orders_file_path).suffix == ".csv":
-                fieldnames = [
-                    "customer_name",
-                    "customer_address",
-                    "customer_phone",
-                    "courier",
-                    "status",
-                    "items",
-                ]
-                writer = csv.DictWriter(file, fieldnames=fieldnames)
-                writer.writeheader()
-                for order in order_list:
-                    writer.writerow(order)
+            fieldnames = [
+                "customer_name",
+                "customer_address",
+                "customer_phone",
+                "courier",
+                "status",
+                "items",
+            ]
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for order in order_list:
+                writer.writerow(order)
             else:
                 print("Incorrect file extension. Please make sure file is csv.")
     except FileNotFoundError:
