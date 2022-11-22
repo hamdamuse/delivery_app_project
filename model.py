@@ -15,7 +15,6 @@ def load_couriers():
 
 courier_list = load_couriers()
 
-
 def load_orders():
     order_list = load(orders_file_path)
     return order_list
@@ -35,19 +34,27 @@ def print_products(product_list):
     for product in product_list:
         print(f"Name: {product['name']}, Price: {product['price']:.2f}")
 
+def print_products_with_indexes(product_list):
+    for index, product in enumerate(product_list):
+        print(f"Index: {index}, Name: {product['name']}, Price: {product['price']}")
+
+def print_couriers_with_indexes(courier_list):
+    for index, courier in enumerate(courier_list):
+        print(f"Index: {index}, Name: {courier['name']}, {courier['phone_number']}")
+
 def print_couriers(courier_list):
     for courier in courier_list:
         print(f"Courier name: {courier['name']}, Phone number: {courier['phone_number']}")
 
 def print_orders(order_list):
     for order in order_list:
-        print(f"""Customer name: {order['customer_name']},
+        print(f"""
+        Customer name: {order['customer_name']},
         Customer address: {order['customer_address']},
         Customer phone: {order['customer_phone']},
         Courier: {order['courier']},
         Status: {order['status']},
-        Items: {order['items']}
-        """)
+        Items: {order['items']}""")
 
 def add_product(product_list, name, price):
     new_product= {'name': name, 'price': price}
@@ -59,5 +66,20 @@ def add_courier(courier_list, name, phone):
     courier_list.append(new_courier)
     return courier_list
 
-def add_order(order_list):
-    pass
+def add_order(order_list,customer_name, customer_address, customer_phone):
+    print_products_with_indexes(product_list)
+    product_index_values = str(input("""    
+Please enter indexes of products,separated by commas, to add to order -> """).replace(" ", ""))
+    print_couriers_with_indexes(courier_list)
+    courier = input("Please enter index of courier to add to order -> ")
+    new_order = {
+        'customer_name': customer_name,
+        'customer_address': customer_address,
+        'customer_phone': customer_phone,
+        'courier': courier,
+        'status': "preparing",
+        'items': product_index_values
+    }
+
+
+
