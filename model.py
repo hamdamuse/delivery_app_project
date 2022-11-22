@@ -39,6 +39,15 @@ def print_couriers(courier_list):
     for courier in courier_list:
         print(f"Courier name: {courier['name']}, Phone number: {courier['phone_number']}")
 
+def print_orders(order_list):
+    for order in order_list:
+        print(f"""Customer name: {order['customer_name']},
+        Customer address: {order['customer_address']},
+        Customer phone: {order['customer_phone']},
+        Courier: {order['courier']},
+        Status: {order['status']},
+        Items: {order['items']}
+        """)
 
 def add_product(product_list, name, price):
     new_product= {'name': name, 'price': price}
@@ -52,4 +61,3 @@ def add_courier(courier_list, name, phone):
 
 def add_order(order_list):
     pass
-
