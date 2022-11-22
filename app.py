@@ -1,4 +1,5 @@
-import file_handlers.model as model
+
+import model 
 
 
 def print_main_menu_options():
@@ -22,9 +23,9 @@ def navigate_main_menu():
         try:
             cmd = int(input("Enter input here -> "))
             if cmd == 0:
-                model.save_products()
-                model.save_couriers()
-                model.save_orders()
+                model.save_products_to_csv()
+                model.save_couriers_to_csv()
+                model.save_orders_to_csv()
                 exit()
             elif cmd == 1:
                 navigate_product_menu()
