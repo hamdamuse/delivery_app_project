@@ -2,6 +2,7 @@ from pathlib import Path
 import csv
 
 
+
 def load(file_name):
     item_list = []
     try:
@@ -101,6 +102,4 @@ def save_orders():
         print(f"Error: {str(e)}")
         
 
-
-save_couriers()
-save_orders()
+load(r"data\products.csv")

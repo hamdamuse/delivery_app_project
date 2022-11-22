@@ -2,6 +2,23 @@ from unittest.mock import patch, Mock, PropertyMock
 from file_handlers import app
 import pytest
 
+def navigate_main_menu():
+    
+    try:
+        cmd = int(input("Enter input here -> "))
+        if cmd == 0:
+            #include save property
+            exit()
+        elif cmd == 1:
+            app.navigate_product_menu()
+        elif cmd == 2:
+            app.navigate_courier_menu()
+        elif cmd == 3:
+            print("Order Menu pending")
+        else: 
+            print("Error: Please input valid number.")
+    except ValueError:
+            print("Please enter a number.")
 
 
 
@@ -32,14 +49,14 @@ Order Menu: 3
     with patch("builtins.input", return_value = 1) as mock_cmd:
         assert input() == 1
 
-        app.navigate_main_menu()
-        if mock_cmd.return_value == 1:
-            mock_print.assert_called_with("Product Menu pending")
-        elif mock_cmd.return_value == 2:
-            mock_print.assert_called_with("Courier Menu pending")
-        elif mock_cmd.return_value == 3:
-            mock_print.assert_called_with("Order Menu pending")
-        else:
+    navigate_main_menu()
+    if mock_cmd.return_value == 1:
+        navigate_main_menu.assert_called_with(app.navigate_product_menu)
+    elif mock_cmd.return_value == 2:
+        navigate_main_menu.assert_called_with(app.navigate_courier_menu)
+    elif mock_cmd.return_value == 3:
+        mock_print.assert_called_with("Order Menu pending")
+    else:
             mock_print.assert_called_with("Error: Please input valid number.")
 
 @patch("builtins.print")
@@ -102,7 +119,7 @@ def test_navigate_product_menu(mock_print):
         elif mock_cmd.return_value == 4:
             mock_print.assert_called_with("Delete product pending")
         elif type(mock_print.return_value) == str:
-            mock_print.assert_called_with("Error: please enter a number")
+            mock_print.assert_called_with("Error: please enter a number.")
         else:
             mock_print.assert_called_with("Error: please input valid number.")
  

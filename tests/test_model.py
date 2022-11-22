@@ -1,6 +1,7 @@
 import test_persistence_layer
 from unittest.mock import patch
-
+import pytest
+from file_handlers import model
 
 
 def test_load_products_from_persistence_layer():
@@ -12,7 +13,7 @@ def test_load_products_from_persistence_layer():
 
 product_list = test_load_products_from_persistence_layer()
 
-def test_format_products():
+def test_format_products(product_list):
     formatted_product_list = []
     for product in product_list:
         product["price"] = float(product["price"])
@@ -23,7 +24,7 @@ def test_format_products():
     
 
 
-def test_enumerate_product_list():
+def test_enumerate_product_list(product_list):
     enumerated_list = []
     for index, product in enumerate(product_list):
         enumerated_list.append(f"Index: {index}, product: {product['name']}")
@@ -75,5 +76,31 @@ def test_add_product():
     assert result == expectation
     return product_list
 
+@pytest.fixture
+def product_name():
+    return "cappuccino"
+
+@pytest.fixture
+def product_price():
+    return 3.4
+
+@pytest.fixture
+def product_list():
+    return [
+        {'name': 'coke zero', 'price':  0.8},
+        {'name': '7up', 'price': 0.8}
+        ]
+
+def test_add_product_including_fixtures(product_name, product_price):
+    model.add_product(product_list, product_name, product_price)
+    result = product_list()
+    expectation = [
+        {'name': 'coke zero', 'price': ' 0.8'},
+        {'name': '7up', 'price': ' 0.8'},
+        {'name': "cappucino", 'price': 3.4}
+        ]
+    assert result == expectation
+
+    
 
 print(product_list)

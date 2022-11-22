@@ -1,3 +1,7 @@
+from file_handlers import model
+
+
+
 def print_main_menu_options():
     print(("""
 Welcome to Hamda's cafe app:
@@ -9,7 +13,6 @@ Order Menu: 3
 """))
 
 def navigate_main_menu():
-    
     print_main_menu_options()
     while True:
         try:
@@ -27,10 +30,10 @@ def navigate_main_menu():
                 break
             else: 
                 print("Error: Please input valid number.")
-            continue
+            break
         except ValueError:
                 print("Please enter a number.")
-                continue
+                break
 
 def print_product_menu_options():
     print("""
@@ -110,4 +113,8 @@ def navigate_courier_menu():
 
 
 if __name__ == "__main__":
+    model.load("data\orders.csv")
+    model.load("data\couriers.csv")
+    model.load("data\orders.csv")
+
     navigate_main_menu()
