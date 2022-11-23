@@ -104,7 +104,7 @@ After several tries to get my program, based on the repository pattern, to work.
 
 ## Week 4:
 
-I decided to completely remove any OOP aspects from my function, to keep the my project as simple as possible in my implementation. Due to my affair with the repoository pattern I had very little time to redesign my program and make sure that all key requirements were met. 
+I decided to completely remove any OOP aspects from my program, to keep the my project as simple as possible in my implementation. Due to my not so brief affair with the repository pattern I had very little time to redesign my program and make sure that all key requirements were met. 
 
 ![image](https://user-images.githubusercontent.com/115266421/203532583-146d98ae-9745-4e82-b8d0-3b40c3669752.png)
 
@@ -114,18 +114,41 @@ I feel like this new structure struck a good balance between simplicity and the 
 
 - Simple implementation
 - Data is fully persisted to csv files - allowing for easier storage of multidimensional data and the in-memory storage of data as dictionaries, which are very easy to change.
+- Employing a three-layered program makes it easy to abstract information from the reader that is unimportant
+
+### UI layer code sample:
+![image](https://user-images.githubusercontent.com/115266421/203536787-0d3cf3b3-5751-4b92-9d16-c8bc2fda0327.png)
+
+### Business layer code sample:
+![image](https://user-images.githubusercontent.com/115266421/203536964-e39d4989-ef93-42a9-8976-2ae4ae045fab.png)
+
+### Persistence layer code sample:
+![image](https://user-images.githubusercontent.com/115266421/203537769-4d6efd69-90f2-4e28-8c86-b031583df25c.png)
+
+
 
 ## Disadvantages:
 
 - Due to time constraints, there is very poor test coverage. 
 - Slightly worse reflection of the business model
 
+# Week 5 and 6:
+
+The client requires the addition of database functionality - they would like all data to be persisted to a database. This was not achieved due to time-constraints.
+
+## Guaranteeing client requirements - testing:
+
+This was a major issue for me. When starting from scratch from the week 4 requirements, I initially used a test-driven development (TDD) approach. This means that my tests precluded any actual code being written, and that I could be sure of my code working when I ran my program. I ran into many hurdles, the first being issues with pytest imports. I had to restructure my file organisation in the root directory to patch this issue in the short-term. I also faced serious issues with ensuring I had a working program before the deadline.
+
+Unfortunately, I had to trade the robustness of my program for a program that has CRUD functionalities for each object of interest.
 
 
 ## Reflections:
 
 Due to the lack of testing, in a real business situation, I would advocate for more time to make sure the program is robust.
 I don't think it wrong to be ambitious and to aim to present the best program I can conjure up, however in future I will be mindful to not make such big changes so close to a hard deadline.
+
+I would love to have another go in future at implementing repositories, to allow for a seamless transition to database inclusion.
 
 
 
