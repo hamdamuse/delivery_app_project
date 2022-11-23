@@ -124,7 +124,7 @@ def update_product(products):
     while True: 
         product_index = int(input("Please enter index of product to update -> "))
         product_name = input("Please enter updated product name -> ")
-        product_price = input("Please enter updated product_price ->")
+        product_price = input("Please enter updated product price -> ")
         if product_name:
             product_list[product_index]['name'] = product_name
         if product_price:
@@ -137,4 +137,16 @@ def update_product(products):
             product_list[product_index]['price'] = product_price
             return product_list
     
+
+def update_courier(couriers):
+    print_couriers_with_indexes(courier_list)   
+    courier_index = int(input("Please enter index of courier to update -> "))
+    courier_name = input("Please enter updated courier name -> ")
+    courier_phone = input("Please enter updated courier phone ->")
+    if courier_name:
+        courier_list[courier_index]['name'] = courier_name
+    if courier_phone:
+        courier_list[courier_index]['phone_number'] = courier_phone
+    return product_list
+
 

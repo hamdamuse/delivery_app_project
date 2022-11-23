@@ -158,7 +158,7 @@ def navigate_order_menu():
                     customer_phone_number
                 )
             elif cmd == 3:
-                print("Update courier pending")
+                model.update_courier(model.courier_list)
                 break
             elif cmd == 4:
                 print("Delete courier pending")
