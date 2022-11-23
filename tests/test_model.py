@@ -1,10 +1,8 @@
-
 from unittest.mock import patch
 import pytest
-import sys
-sys.path.append("..")
-import file_handlers.model as model
+import model as model
 import tests.test_persistence_layer as csv_layer
+
 
 def test_load_products_from_persistence_layer():
     product_list = csv_layer.test_load_products()
