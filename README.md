@@ -88,7 +88,8 @@ It was at this point that the concepts of unit testing were introduced to me, so
 
 I had taken some advice and looked into some design patterns that may help me... which led me to the book 'Architecture Patterns with Python: Enabling Test-Driven Development, Domain-Driven Design, and Event-Driven Microservices' by Harry Percival and Bob Gregory. This included a section on something called the 'repository pattern'.
 
-![image](https://user-images.githubusercontent.com/115266421/203527983-2ebdaf93-aa59-4612-b39f-2ccfc6e8aa5a.png)
+![image](https://user-images.githubusercontent.com/115266421/203539815-0c9b6537-5272-47c9-8d22-c1734fb18b8a.png)
+
 
 If done right, and including the concept of dependency inversion, my business logic layer would not need to change if the persistence layer changes. I however, couldn't grasp where in my programs all the function responsibilites should be. Also, I did not know how to design my project using dependency inversion. My project was further impeded by my lack of ability in the implementation of OOP principles. I struggled to test all of my classes and mock the dependencies correctly.
 
