@@ -70,8 +70,9 @@ def navigate_product_menu():
                 model.add_product(model.product_list, product_name, product_price)
                 continue
             elif cmd == 3:
-                print("Update product pending")
-                break
+                
+                model.update_product(model.product_list)
+                continue
             elif cmd == 4:
                 print("Delete product pending")
                 break
