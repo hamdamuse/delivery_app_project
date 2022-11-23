@@ -55,17 +55,31 @@ def print_products(product_list):
 
 
 
-def print_products_with_indexes(product_list):
+def print_products_with_indexes(products):
     print("\tProducts with their indexes:")
     for index, product in enumerate(product_list):
         print(f"""\tIndex: {index}, Name: {product['name']}, Price: {product['price']}""")
 
 
 
-def print_couriers_with_indexes(courier_list):
+def print_couriers_with_indexes(couriers):
     print("\tCouriers with their indexes:")
     for index, courier in enumerate(courier_list):
-        print(f"""Index: {index}, Name: {courier['name']}, {courier['phone_number']}""")
+        print(f"""Index: {index}, Name: {courier['name']}, Phone: {courier['phone_number']}""")
+
+def print_orders_with_indexes(orders):
+    print("\tOrders with their indexes:")
+    for index, order in enumerate(order_list):
+        print(f"""
+        Index: {index},
+        Customer name: {order['customer_name']},
+        Customer address: {order['customer_address']},
+        Customer phone{order['customer_phone']}, 
+        Courier: {order['courier']}
+        Status: {order['status']},
+        Items: {order['items']}
+        """)
+
 
 
 def print_couriers(courier_list):
@@ -148,5 +162,32 @@ def update_courier(couriers):
     if courier_phone:
         courier_list[courier_index]['phone_number'] = courier_phone
     return product_list
+
+def update_order(orders):
+    print_orders_with_indexes(order_list)
+    order_index = int(input("Please enter index of order to update -> "))
+    customer_name = input("Please enter updated customer name -> ")
+    customer_address = input("Please enter updated customer address -> ")
+    print_couriers_with_indexes(courier_list)
+    courier = (input("Please enter updated courier index -> "))
+    try:
+        courier - int(courier)
+    except ValueError:
+        print("please enter a number ")
+    status = input("Please enter updated order status -> ")
+    items = input("Please enter updated product indices, separated by commas -> ").replace(" ", "")
+    if customer_name:
+        order_list[order_index]['customer_name'] = customer_name
+    if customer_address:
+        order_list[order_index]['customer_address'] = customer_address
+    if courier:
+        order_list[order_index]['courier'] = courier
+    if status:
+        order_list[order_index]['status'] = status
+    if items:
+        order_list[order_index]['items'] = items
+
+
+
 
 

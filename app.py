@@ -17,8 +17,8 @@ Order Menu: 3
 
 
 def navigate_main_menu():
-    print_main_menu_options()
     while True:
+        print_main_menu_options()
         try:
             cmd = int(input("Enter input here -> "))
             if cmd == 0:
@@ -30,12 +30,11 @@ def navigate_main_menu():
                 navigate_product_menu()
             elif cmd == 2:
                 navigate_courier_menu()
-                break
             elif cmd == 3:
                 navigate_order_menu()
             else:
                 print("Error: Please input valid number.")
-            break
+            continue
         except ValueError:
             print("Please enter a number.")
             break
@@ -70,12 +69,11 @@ def navigate_product_menu():
                 model.add_product(model.product_list, product_name, product_price)
                 continue
             elif cmd == 3:
-                
                 model.update_product(model.product_list)
                 continue
             elif cmd == 4:
                 print("Delete product pending")
-                break
+                continue
             else:
                 print("Error: please input valid number.")
             continue
@@ -116,7 +114,7 @@ def navigate_courier_menu():
                 model.update_courier(model.courier_list)
             elif cmd == 4:
                 print("Delete courier pending")
-                break
+                continue
             else:
                 print("Error: please input valid number.")
             continue
@@ -157,11 +155,11 @@ def navigate_order_menu():
                     customer_phone_number
                 )
             elif cmd == 3:
-                print("update order pending")
-                break
+                model.update_order(model.order_list)
+                continue
             elif cmd == 4:
                 print("update order pending")
-                break
+                continue
             else:
                 print("Error: please input valid number.")
             continue
