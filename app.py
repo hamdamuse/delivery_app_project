@@ -1,5 +1,4 @@
-
-import model 
+import model
 
 
 def print_main_menu_options():
@@ -33,8 +32,7 @@ def navigate_main_menu():
                 navigate_courier_menu()
                 break
             elif cmd == 3:
-                print("Order Menu pending")
-                break
+                navigate_order_menu()
             else:
                 print("Error: Please input valid number.")
             break
@@ -109,12 +107,11 @@ def navigate_courier_menu():
                 navigate_main_menu()
             elif cmd == 1:
                 model.print_couriers(model.courier_list)
-                break
             elif cmd == 2:
                 courier_name = input("Please enter courier name -> ")
                 courier_phone = input("Please enter courier phone number -> ")
                 model.add_courier(model.courier_list, courier_name, courier_phone)
-            elif cmd == 3: 
+            elif cmd == 3:
                 print("Update courier pending")
                 break
             elif cmd == 4:
@@ -129,13 +126,16 @@ def navigate_courier_menu():
 
 
 def print_order_menu_options():
-    print("""
+    print(
+        """
     ORDER MENU
     Exit to MAIN MENU: 0
     Print orders: 1
     Add order: 2
     Update order: 3
-    """)
+    """
+    )
+
 
 def navigate_order_menu():
     while True:
@@ -146,13 +146,17 @@ def navigate_order_menu():
                 navigate_main_menu()
             elif cmd == 1:
                 model.print_orders(model.order_list)
-                break
             elif cmd == 2:
                 customer_name = input("Please enter customer name -> ")
-                customer_address = input("Please enter customer phone number -> ")
+                customer_address = input("Please enter customer phone addresss -> ")
                 customer_phone_number = input("Please enter customer phone number ->")
-                model.add_order(model.order_list, customer_name, customer_address, customer_phone_number)
-            elif cmd == 3: 
+                model.add_order(
+                    model.order_list,
+                    customer_name,
+                    customer_address,
+                    customer_phone_number
+                )
+            elif cmd == 3:
                 print("Update courier pending")
                 break
             elif cmd == 4:
