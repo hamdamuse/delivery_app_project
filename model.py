@@ -50,9 +50,7 @@ def save_orders_to_csv():
 
 
 def print_products(product_list):
-
     for product in product_list:
-
         print(f"Name: {product['name']}, Price: {product['price']:.2f}")
 
 
@@ -61,6 +59,7 @@ def print_products_with_indexes(product_list):
     print("\tProducts with their indexes:")
     for index, product in enumerate(product_list):
         print(f"""\tIndex: {index}, Name: {product['name']}, Price: {product['price']}""")
+
 
 
 def print_couriers_with_indexes(courier_list):
@@ -119,4 +118,23 @@ Please enter indexes of products,separated by commas, to add to order -> """).re
     }
     order_list.append(new_order)
     return order_list
+
+def update_product(products):
+    print_products_with_indexes(product_list)
+    while True: 
+        product_index = int(input("Please enter index of product to update -> "))
+        product_name = input("Please enter updated product name -> ")
+        product_price = input("Please enter updated product_price ->")
+        if product_name:
+            product_list[product_index]['name'] = product_name
+        if product_price:
+            try:
+                float(product_price)
+            except ValueError:
+                print("Error: please enter a number")
+                continue
+    
+            product_list[product_index]['price'] = product_price
+            return product_list
+    
 
