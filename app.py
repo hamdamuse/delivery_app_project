@@ -59,10 +59,10 @@ def navigate_product_menu():
         try:
             cmd = int(input("Enter input here -> "))
             if cmd == 0:
-                # include save property
                 navigate_main_menu()
             elif cmd == 1:
                 model.print_products(model.product_list)
+                continue
             elif cmd == 2:
                 product_name = input("Enter new product name -> ")
                 product_price = float(input("Enter new product price -> "))
@@ -72,7 +72,7 @@ def navigate_product_menu():
                 model.update_product(model.product_list)
                 continue
             elif cmd == 4:
-                print("Delete product pending")
+                model.delete_product(model.product_list)
                 continue
             else:
                 print("Error: please input valid number.")
@@ -113,7 +113,7 @@ def navigate_courier_menu():
             elif cmd == 3:
                 model.update_courier(model.courier_list)
             elif cmd == 4:
-                print("Delete courier pending")
+                model.delete_courier(model.courier_list)
                 continue
             else:
                 print("Error: please input valid number.")
@@ -131,6 +131,7 @@ def print_order_menu_options():
     Print orders: 1
     Add order: 2
     Update order: 3
+    Delete order: 3
     """
     )
 
@@ -144,6 +145,7 @@ def navigate_order_menu():
                 navigate_main_menu()
             elif cmd == 1:
                 model.print_orders(model.order_list)
+                continue
             elif cmd == 2:
                 customer_name = input("Please enter customer name -> ")
                 customer_address = input("Please enter customer phone addresss -> ")
@@ -154,11 +156,12 @@ def navigate_order_menu():
                     customer_address,
                     customer_phone_number
                 )
+                continue
             elif cmd == 3:
                 model.update_order(model.order_list)
                 continue
             elif cmd == 4:
-                print("update order pending")
+                model.delete_order(model.order_list)
                 continue
             else:
                 print("Error: please input valid number.")

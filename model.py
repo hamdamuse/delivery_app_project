@@ -186,8 +186,32 @@ def update_order(orders):
         order_list[order_index]['status'] = status
     if items:
         order_list[order_index]['items'] = items
+    return order_list
 
 
+def delete_product(products):
+    print_products_with_indexes(product_list)
+    try:
+        index = int(input("Please enter index of product to remove -> "))
+        product_list.pop(index)
+    except ValueError:
+        print("Please enter a number.")
+
+def delete_courier(couriers):
+    print_couriers_with_indexes(courier_list)
+    try:
+        index = int(input("Please enter index of courier to remove -> "))
+        courier_list.pop(index)
+    except ValueError:
+        print("Please enter a number.")
+
+def delete_order(orders):
+    print_orders_with_indexes(order_list)
+    try:
+        index = int(input("Please enter index of order to remove -> "))
+        order_list.pop(index)
+    except ValueError:
+        print("Please enter a number.")
 
 
 
