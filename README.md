@@ -21,8 +21,6 @@ My focus for the first week was to flesh out the user interface for the main men
 
 ![image](https://user-images.githubusercontent.com/115266421/203516622-aa71f382-4734-43ed-9180-5a56c6ef1eb7.png)
 
-
-
 ### Advantages:
 
 - It was very straightforward to implement this code, and it acted as proof-of-concept for the product CRUD operations
@@ -149,6 +147,8 @@ This was a major issue for me. When starting from scratch from the week 4 requir
 
 Unfortunately, I had to trade the robustness of my program for a program that has CRUD functionalities for each object of interest.
 
+## Sample test
+![image](https://user-images.githubusercontent.com/115266421/203548599-466a4088-427f-4881-9b20-210a17ecd77b.png)
 
 # Reflections:
 
