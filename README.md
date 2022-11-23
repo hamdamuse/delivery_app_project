@@ -10,7 +10,7 @@ I was tasked to create a CLI app to log and track orders for a pop-up café owne
 
 The way I tackled this business problem was to spend a week focusing on a specific aspect of the requirement, and to gradually increase the number of requirements covered by my program. As I am knew to Python, this project has allowed me to implement the things that I have learnt, as I learnt them, in the hopes of with time, meeting all client requirements.
 
-## Week 1:
+# Week 1:
 
 My focus for the first week was to flesh out the user interface for the main menu and product menu, as well as satisfy these core functionalities:
 
@@ -31,7 +31,7 @@ My focus for the first week was to flesh out the user interface for the main men
 
 - Doesn't reflect the business model very well, as a lot of Python-based jargon will have to be explained in order to get the client to understand how the app meets their requirements.
 
-## Week 2:
+# Week 2:
 
 These core functionalities were introduced:
 
@@ -57,7 +57,7 @@ These core functionalities were introduced:
 - Data was persisted to file after every CRUD operation was completed. Files were read and wrote to many times, makes losing file data more likely.
 - Logic to do with data persistence is coupled to both the user interface layer, and business logic layer. This makes updating the codebase very difficult.
 
-## Week 3:
+# Week 3:
 
 These core functionalities were introduced:
 
@@ -102,13 +102,19 @@ If done right, and including the concept of dependency inversion, my business lo
 
 After several tries to get my program, based on the repository pattern, to work... it had to be shelved.
 
-## Week 4:
+# Week 4:
 
 I decided to completely remove any OOP aspects from my program, to keep the my project as simple as possible in my implementation. Due to my not so brief affair with the repository pattern I had very little time to redesign my program and make sure that all key requirements were met. 
 
+# Project design
 ![image](https://user-images.githubusercontent.com/115266421/203532583-146d98ae-9745-4e82-b8d0-3b40c3669752.png)
 
 I feel like this new structure struck a good balance between simplicity and the benefits of abstraction. I don't want to bombard a potential client with programming-specific concepts when it's not necessary to do so.
+
+# Project design - tree structure
+
+
+![image](https://user-images.githubusercontent.com/115266421/203539145-b6c82cee-b758-4103-848f-a02a230ea2a4.png)
 
 ## Advantages:
 
@@ -136,14 +142,14 @@ I feel like this new structure struck a good balance between simplicity and the 
 
 The client requires the addition of database functionality - they would like all data to be persisted to a database. This was not achieved due to time-constraints.
 
-## Guaranteeing client requirements - testing:
+# Guaranteeing client requirements - testing:
 
 This was a major issue for me. When starting from scratch from the week 4 requirements, I initially used a test-driven development (TDD) approach. This means that my tests precluded any actual code being written, and that I could be sure of my code working when I ran my program. I ran into many hurdles, the first being issues with pytest imports. I had to restructure my file organisation in the root directory to patch this issue in the short-term. I also faced serious issues with ensuring I had a working program before the deadline.
 
 Unfortunately, I had to trade the robustness of my program for a program that has CRUD functionalities for each object of interest.
 
 
-## Reflections:
+# Reflections:
 
 Due to the lack of testing, in a real business situation, I would advocate for more time to make sure the program is robust.
 I don't think it wrong to be ambitious and to aim to present the best program I can conjure up, however in future I will be mindful to not make such big changes so close to a hard deadline.
