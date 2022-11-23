@@ -114,7 +114,6 @@ def navigate_courier_menu():
                 model.add_courier(model.courier_list, courier_name, courier_phone)
             elif cmd == 3:
                 model.update_courier(model.courier_list)
-                break
             elif cmd == 4:
                 print("Delete courier pending")
                 break
