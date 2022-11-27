@@ -1,21 +1,6 @@
 import model
 
 
-def print_main_menu_options():
-    print(
-        (
-            """
-Welcome to Hamda's cafe app:
-MAIN MENU
-Exit: 0
-Product Menu: 1
-Courier Menu: 2
-Order Menu: 3
-"""
-        )
-    )
-
-
 def navigate_main_menu():
     while True:
         print_main_menu_options()
@@ -40,16 +25,18 @@ def navigate_main_menu():
             break
 
 
-def print_product_menu_options():
+def print_main_menu_options():
     print(
-        """
-PRODUCT MENU
-Exit to MAIN MENU: 0
-Print products: 1
-Add product: 2
-Update product: 3
-Delete product: 4
+        (
+            """
+Welcome to Hamda's cafe app:
+MAIN MENU
+Exit: 0
+Product Menu: 1
+Courier Menu: 2
+Order Menu: 3
 """
+        )
     )
 
 
@@ -57,7 +44,7 @@ def navigate_product_menu():
     while True:
         print_product_menu_options()
         try:
-            cmd = int(input("Enter input here -> "))
+            cmd = int(input("Enter input here -> "))  
             if cmd == 0:
                 navigate_main_menu()
             elif cmd == 1:
@@ -81,16 +68,15 @@ def navigate_product_menu():
             print("Error: please enter a number")
             continue
 
-
-def print_courier_menu_options():
+def print_product_menu_options():
     print(
         """
-COURIER MENU
+PRODUCT MENU
 Exit to MAIN MENU: 0
-Print couriers: 1
-Add courier: 2
-Update courier: 3
-Delete courier: 4
+Print products: 1
+Add product: 2
+Update product: 3
+Delete product: 4
 """
     )
 
@@ -122,17 +108,16 @@ def navigate_courier_menu():
             print("Error: please enter a number")
             continue
 
-
-def print_order_menu_options():
+def print_courier_menu_options():
     print(
         """
-    ORDER MENU
-    Exit to MAIN MENU: 0
-    Print orders: 1
-    Add order: 2
-    Update order: 3
-    Delete order: 3
-    """
+COURIER MENU
+Exit to MAIN MENU: 0
+Print couriers: 1
+Add courier: 2
+Update courier: 3
+Delete courier: 4
+"""
     )
 
 
@@ -169,6 +154,19 @@ def navigate_order_menu():
         except ValueError:
             print("Error: please enter a number")
             continue
+
+
+def print_order_menu_options():
+    print(
+        """
+    ORDER MENU
+    Exit to MAIN MENU: 0
+    Print orders: 1
+    Add order: 2
+    Update order: 3
+    Delete order: 3
+    """
+    )
 
 
 if __name__ == "__main__":
